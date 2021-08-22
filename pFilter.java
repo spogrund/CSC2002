@@ -78,7 +78,7 @@ public class pFilter extends RecursiveAction{
       catch(FileNotFoundException e){
          System.out.println("file not found");
       }
-      System.out.println(Arrays.toString(inArr));
+      //System.out.println(Arrays.toString(inArr));
       long start = System.nanoTime();
       ForkJoinPool pool = new ForkJoinPool();
       pFilter pmf = new pFilter(inArr,fSize);
@@ -88,6 +88,20 @@ public class pFilter extends RecursiveAction{
       long end = System.nanoTime();
       System.out.println(Arrays.toString(outArr));
       System.out.println(end-start);
+      
+      try{
+         FileWriter fwriter = new FileWriter(outFileName);
+         FileWriter fwriter2 = new FileWriter("Parallel " + Integer.toString(outArr.length)+" " +Integer.toString(fSize) + " " +Integer.toString(SEQ_CUTOFF)+" time.txt",true);
+         for (int i=0; i< outArr.length; i++){
+            fwriter.write(Double.toString(outArr[i])+"\n");
+         }
+         fwriter2.write(end-start + "\n");
+         fwriter.close();
+         fwriter2.close();
+      }
+      catch(IOException e){
+         System.out.println("an error occured");
+      }
    }
   
 
