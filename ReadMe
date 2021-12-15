@@ -1,0 +1,5 @@
+Median filtering is a nonlinear digital filtering technique that is often used to remove noise
+from a data set. Noise reduction is usually a pre-processing step to that improves or “cleans”
+the data in preparation for later processing. In this method, a median filter slides over the data
+item by item, generating a new data set, where each item is replaced by the median of
+neighbouring entries.
